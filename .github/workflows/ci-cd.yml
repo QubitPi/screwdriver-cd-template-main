@@ -1,0 +1,21 @@
+# Copyright Jiaqi Liu. All rights reserved.
+---
+name: CI/CD
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm test
